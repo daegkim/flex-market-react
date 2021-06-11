@@ -4,7 +4,7 @@ import ProductComponent from './ProductComponent';
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import ProductDetailComponent from './ProductDetailComponent';
-import AccountModalComponent from './AccountModalComponent';
+
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -24,7 +24,6 @@ function App() {
           </Route>
           <Route path="/product/:productId" component={ ProductDetailComponent } exact></Route>
         </Switch>
-        <AccountModalComponent isLoginBtnClick="true"></AccountModalComponent>
       </div>
     </BrowserRouter>
   );

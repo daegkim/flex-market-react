@@ -9,8 +9,10 @@ function HeaderComponent(props) {
   const [category, setCategory] = useState([]);
   const [isLoginBtnClick, setIsLoginBtnClick] = useState(false);
   const btnAccountClick = (e) => {
-    console.log(e);
-    setIsLoginBtnClick(!isLoginBtnClick);
+    props.setIsLoggedIn(!props.isLoggedIn);
+    if(e.target.id === 'btnLogin'){
+      setIsLoginBtnClick(!isLoginBtnClick);
+    }
   }
   const getCategory = () => {
     fetch(urls.category)
@@ -24,34 +26,34 @@ function HeaderComponent(props) {
 
   return (
     <div className="header">
-    <div className="header-title">
-      <Link to="/">
-        <h1>Flex Market</h1>
-      </Link>
+      <div className="header-title">
+        <Link to="/">
+          <h1>Flex Market</h1>
+        </Link>
+      </div>
+      <div className="header-account-btns">
+        <button id="btnLogin" style={{ display: props.isLoggedIn ? 'none' : 'inline-block' }} onClick={btnAccountClick}>login</button>
+        <button style={{ display: props.isLoggedIn ? 'inline-block' : 'none' }} onClick={btnAccountClick}>logout</button>
+      </div>
+      <div className="header-category">
+        <table>
+          <tbody>
+            <tr>
+              {
+                category.map((value, index) => {
+                  return (
+                      <td key={value.categoryId} onClick={() => {props.setCategoryId(value.categoryId)}}> 
+                        <Link to="/"> { value.categoryName } </Link>
+                      </td>  
+                  );
+                })
+              }
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <AccountModal isLoginBtnClick={isLoginBtnClick} setIsLoginBtnClick={setIsLoginBtnClick} setIsLoggedIn={props.setIsLoggedIn}></AccountModal>
     </div>
-    <div className="header-account-btns">
-      <button style={{ display: props.isLoggedIn ? 'none' : 'inline-block' }} onClick={btnAccountClick}>login</button>
-      <button style={{ display: props.isLoggedIn ? 'inline-block' : 'none' }} onClick={btnAccountClick}>logout</button>
-    </div>
-    <div className="header-category">
-      <table>
-        <tbody>
-          <tr>
-            {
-              category.map((value, index) => {
-                return (
-                    <td key={value.categoryId} onClick={() => {props.setCategoryId(value.categoryId)}}> 
-                      <Link to="/"> { value.categoryName } </Link>
-                    </td>  
-                );
-              })
-            }
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <AccountModal isLoginBtnClick={isLoginBtnClick} setIsLoginBtnClick={setIsLoginBtnClick} setIsLoggedIn={props.setIsLoggedIn}></AccountModal>
-  </div>
   );
 }
 

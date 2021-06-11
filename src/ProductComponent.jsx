@@ -10,21 +10,7 @@ function ProductComponent(props) {
     .then((res) => { return res.json(); })
     .then((res_json) => { setProducts(res_json); });
   };
-  /*
-  const getProductsListView = () => {
-    return (
-      <ul>
-        {
-          products.map((value, index) => {
-            return (
-              <li key={index}>{value.name}</li>
-            );
-          })
-        }
-      </ul>
-    );
-  };
-  */
+  
   const getProductsTableView = (numPerRow) => {
     let result = [];
     let tmp = [];
