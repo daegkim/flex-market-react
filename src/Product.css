@@ -1,0 +1,8 @@
+.product > ul {
+  list-style-type: none;
+  padding: 0px;
+}
+
+.product > table {
+  margin: auto;
+}

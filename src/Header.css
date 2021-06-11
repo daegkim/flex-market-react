@@ -1,0 +1,32 @@
+.header {
+  padding-bottom: 20px;
+}
+
+.header-title {
+  margin-right: 10px;
+  margin-left: 50px;
+  display: inline-block;
+}
+
+.header-account-btns {
+  display: inline-block;
+}
+
+.header-title a:link, .header-title a:visited, .header-title a:active, .header-title a:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.header-category > table{
+  margin: auto;
+}
+
+.header-category td {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.header-category a:link, .header-category a:visited, .header-category a:active, .header-category a:hover {
+  text-decoration: none;
+  color: black;
+}
