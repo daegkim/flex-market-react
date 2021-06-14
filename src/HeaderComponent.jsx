@@ -9,7 +9,10 @@ function HeaderComponent(props) {
   const [category, setCategory] = useState([]);
   const [isLoginBtnClick, setIsLoginBtnClick] = useState(false);
   const btnAccountClick = (e) => {
-    props.setIsLoggedIn(!props.isLoggedIn);
+    //props.setIsLoggedIn(!props.isLoggedIn);
+    if(e.target.id === 'btnLogout'){
+      props.setIsLoggedIn(!props.isLoggedIn);
+    }
     if(e.target.id === 'btnLogin'){
       setIsLoginBtnClick(!isLoginBtnClick);
     }
@@ -33,7 +36,7 @@ function HeaderComponent(props) {
       </div>
       <div className="header-account-btns">
         <button id="btnLogin" style={{ display: props.isLoggedIn ? 'none' : 'inline-block' }} onClick={btnAccountClick}>login</button>
-        <button style={{ display: props.isLoggedIn ? 'inline-block' : 'none' }} onClick={btnAccountClick}>logout</button>
+        <button id='btnLogout' style={{ display: props.isLoggedIn ? 'inline-block' : 'none' }} onClick={btnAccountClick}>logout</button>
       </div>
       <div className="header-category">
         <table>
