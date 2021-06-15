@@ -7,6 +7,8 @@ function AccountModalComponent(props) {
   //state
   const [userId, setUserId] = useState('');
   const [userPwd, setUserPwd] = useState('');
+  const [isCorrectPwd, setIsCorrectPwd] = useState(true);
+  const [shakeStart, setShakeStart] = useState(false);
   const handleUserId = ({target: { value }}) => {
     setUserId(value);
   }
@@ -30,21 +32,17 @@ function AccountModalComponent(props) {
   //return
   return (
     <div className="account-modal" style={{ display: props.isLoginBtnClick ? 'block' : 'none' }}>
-      <div className="account-modal-content">
+      <div className={"account-modal-content " + (shakeStart ? "account-modal-content-animation" : "")}
+        onAnimationEnd={() => {
+          console.log('hello');
+          setShakeStart(false);
+        }}
+      >
         <div className="account-modal-content-header">
           <h2>Login</h2>
         </div>
-        <form className="account-modal-content-form">
-          <div>
-            <label>ID : </label>
-            <input type="text" value={userId} onChange={handleUserId}></input>
-          </div>
-          <div>
-            <label>PWD : </label>
-            <input type="password" value={userPwd} onChange={handleUserPwd}></input>
-          </div>
-        </form>
-        <button onClick={(e) => {
+        <form className="account-modal-content-form" onSubmit={(e) => {
+          e.preventDefault();
           tryLogin(userId, userPwd)
           .then((res) => {
             return res.json();
@@ -53,14 +51,32 @@ function AccountModalComponent(props) {
             if(res_json.isSuccess){
               props.setIsLoginBtnClick(!props.isLoginBtnClick);
               props.setIsLoggedIn(true);
+              setIsCorrectPwd(true);
               setUserId('');
               setUserPwd('');
+            }
+            else{
+              setIsCorrectPwd(false);
+              setShakeStart(true);
             }
           })
           .catch((res) => {
             console.log(res);
           })
-        }}> 로그인 </button>
+        }}>
+          <div>
+            <label>ID : </label>
+            <input type="text" value={userId} onChange={handleUserId}></input>
+          </div>
+          <div>
+            <label>PWD : </label>
+            <input type="password" value={userPwd} onChange={handleUserPwd}></input>
+          </div>
+          <p className="account-modal-wrong-pwd" style={{ display: isCorrectPwd ? 'none' : 'inline-block' }}> wrong password </p>
+          <div>
+            <button type="submit"> 로그인 </button>
+          </div>
+        </form>
       </div>
       <div className="account-modal-layer">
       </div>
