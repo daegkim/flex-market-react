@@ -1,7 +1,6 @@
 import './AccountModal.css';
 import { useState } from 'react';
 import urls from './urls';
-import axios from 'axios';
 
 function AccountModalComponent(props) {
   //state
@@ -18,15 +17,34 @@ function AccountModalComponent(props) {
 
   //custom method
   const tryLogin = function(userId, userPwd) {
-    console.log(userId, userPwd);
-    return fetch(urls.login, {
+    fetch(urls.login, {
       method: 'POST',
       mode: 'cors',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({userId: userId, userPwd: userPwd})
-    });
+    })
+    .then((res) => {
+      return res.json();
+    })
+    .then((res_json) => {
+      if(res_json.isSuccess){
+        props.setIsLoginBtnClick(!props.isLoginBtnClick);
+        props.setIsLoggedIn(true);
+        setIsCorrectPwd(true);
+        setUserId('');
+        setUserPwd('');
+      }
+      else{
+        setIsCorrectPwd(false);
+        setShakeStart(true);
+      }
+    })
+    .catch((res) => {
+      console.log(res);
+    })
+    
   }
 
   //return
@@ -34,35 +52,23 @@ function AccountModalComponent(props) {
     <div className="account-modal" style={{ display: props.isLoginBtnClick ? 'block' : 'none' }}>
       <div className={"account-modal-content " + (shakeStart ? "account-modal-content-animation" : "")}
         onAnimationEnd={() => {
-          console.log('hello');
           setShakeStart(false);
         }}
       >
+        <div className="account-modal-content-closebtn" onClick={() => {
+          props.setIsLoginBtnClick(false);
+          setIsCorrectPwd(true);
+          setUserId('');
+          setUserPwd('');
+        }}>
+          <img src={process.env.PUBLIC_URL + '/btn-popup-close.png'}/>
+        </div>
         <div className="account-modal-content-header">
           <h2>Login</h2>
         </div>
         <form className="account-modal-content-form" onSubmit={(e) => {
           e.preventDefault();
-          tryLogin(userId, userPwd)
-          .then((res) => {
-            return res.json();
-          })
-          .then((res_json) => {
-            if(res_json.isSuccess){
-              props.setIsLoginBtnClick(!props.isLoginBtnClick);
-              props.setIsLoggedIn(true);
-              setIsCorrectPwd(true);
-              setUserId('');
-              setUserPwd('');
-            }
-            else{
-              setIsCorrectPwd(false);
-              setShakeStart(true);
-            }
-          })
-          .catch((res) => {
-            console.log(res);
-          })
+          tryLogin(userId, userPwd);
         }}>
           <div>
             <label>ID : </label>
@@ -72,10 +78,11 @@ function AccountModalComponent(props) {
             <label>PWD : </label>
             <input type="password" value={userPwd} onChange={handleUserPwd}></input>
           </div>
-          <p className="account-modal-wrong-pwd" style={{ display: isCorrectPwd ? 'none' : 'inline-block' }}> wrong password </p>
+          { !isCorrectPwd && <p className="account-modal-wrong-pwd"> wrong password </p>}
           <div>
-            <button type="submit"> 로그인 </button>
+            <button type="submit"> Login </button>
           </div>
+          <p className="account-modal-content-signup"> Sign up </p>
         </form>
       </div>
       <div className="account-modal-layer">

@@ -54,3 +54,13 @@
   margin: 0px 0px 20px 0px;
   color: red;
 }
+
+.account-modal-content-closebtn {
+  position: fixed;
+  right: 10px;
+}
+
+.account-modal-content-signup {
+  margin: 0px;
+  font-size: 12px;
+}

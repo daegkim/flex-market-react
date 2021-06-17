@@ -5,6 +5,7 @@ import urls from './urls';
 
 function ProductComponent(props) {
   const [products, setProducts] = useState([]);
+  const [productCount, SetProductCount] = useState(4);
   const getProducts = () => {
     fetch(urls.list + props.categoryId)
     .then((res) => { return res.json(); })
@@ -57,13 +58,38 @@ function ProductComponent(props) {
     );
   }
 
+  const getProductCount = () => {
+    var cnt = 4;
+    if(window.innerWidth < '700'){
+      cnt = 2;
+    }
+    else if(window.innerWidth < '900'){
+      cnt = 3;
+    }
+    else {
+      cnt = 4;
+    }
+    return cnt;
+  }
+
+  const setProductsTableView = () => {
+    SetProductCount(getProductCount());
+  }
+
   useEffect(() => {
     getProducts();
   }, [props.categoryId]);
 
+  useEffect(() => {
+    window.addEventListener('resize', setProductsTableView);
+    return () => {
+      window.removeEventListener('resize', setProductsTableView);
+    }
+  });
+
   return (
     <div className="product">
-      { getProductsTableView(4) }
+      { getProductsTableView(getProductCount()) }
     </div>
   );
 }
