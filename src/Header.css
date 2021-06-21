@@ -8,7 +8,11 @@
   display: inline-block;
 }
 
-.header-account-btns {
+.header-account-component {
+  display: inline-block;
+}
+
+.header-account-component > p {
   display: inline-block;
 }
 

@@ -34,9 +34,13 @@ function HeaderComponent(props) {
           <h1>Flex Market</h1>
         </Link>
       </div>
-      <div className="header-account-btns">
+      <div className="header-account-component">
         <button id="btnLogin" style={{ display: props.isLoggedIn ? 'none' : 'inline-block' }} onClick={btnAccountClick}>login</button>
         <button id='btnLogout' style={{ display: props.isLoggedIn ? 'inline-block' : 'none' }} onClick={btnAccountClick}>logout</button>
+      </div>
+      <div className="header-account-component">
+        <p>daegeunkim 님</p>
+        <p>daegeunkim 님</p>
       </div>
       <div className="header-category">
         <table>

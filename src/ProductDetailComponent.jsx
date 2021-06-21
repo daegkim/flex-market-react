@@ -24,6 +24,7 @@ function ProductDetailComponent() {
         <Link to="/">
           <button>prev</button>
         </Link>
+        <button>buy</button>
       </div>
     </div>
   );
