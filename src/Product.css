@@ -1,3 +1,8 @@
+.product {
+  overflow-y: scroll;
+  height: calc(100vh - 180px);
+}
+
 .product > ul {
   list-style-type: none;
   padding: 0px;

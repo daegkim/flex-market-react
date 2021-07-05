@@ -39,8 +39,6 @@ function HeaderComponent(props) {
         <button id='btnLogout' style={{ display: props.isLoggedIn ? 'inline-block' : 'none' }} onClick={btnAccountClick}>logout</button>
       </div>
       <div className="header-account-component">
-        <p>daegeunkim 님</p>
-        <p>daegeunkim 님</p>
       </div>
       <div className="header-category">
         <table>
