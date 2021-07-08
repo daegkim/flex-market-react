@@ -1,7 +1,7 @@
-import './AccountInfoModal.css';
+import './UserInfoModal.css';
 import { useState } from 'react';
 
-function AccountInfoModalComponent(props) {
+function UserInfoModalComponent(props) {
   //state
   const [moveDown, setMoveDown] = useState(false);
 
@@ -20,18 +20,16 @@ function AccountInfoModalComponent(props) {
   //return
   if(props.isShown){
     return (
-      <div className="account-info-modal">
-        <div className={"account-info-modal-content " + (moveDown ? "account-info-modal-content-animation-down " : "") + (props.moveUp ? "account-info-modal-content-animation-up " : "")}
+      <div className="user-info-modal">
+        <div className={"user-info-modal-content " + (moveDown ? "user-info-modal-content-animation-down " : "") + (props.moveUp ? "user-info-modal-content-animation-up " : "")}
         onAnimationEnd={makeMoveDown}>
           <img src={process.env.PUBLIC_URL + '/down-arrow-icon.png'}
           onClick={() => { setMoveDown(true); }}/>
-          <p>김대근 님 환영합니다.</p>
-          <p>현재 Point : 30000P</p>
+          <p>{props.userInfo.userName}님 환영합니다.</p>
+          <p>현재 Point : {props.userInfo.point}P</p>
           <button>충전</button>
-          <p>주소 : 경기도 고양시 일산서구 킨텍스로 240</p>
-          <p>연락처 : 010-5058-3995</p>
         </div>
-        <div className="account-info-modal-layer">
+        <div className="user-info-modal-layer">
         </div>
       </div>
     );
@@ -43,4 +41,4 @@ function AccountInfoModalComponent(props) {
   }
 }
 
-export default AccountInfoModalComponent;
+export default UserInfoModalComponent;

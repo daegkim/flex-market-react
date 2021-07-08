@@ -3,13 +3,13 @@
  100% {bottom: -170px }
 }
 
-.account-info-modal {
+.user-info-modal {
   position: relative;
   width: 100%;
   z-index: 999;
 }
 
-.account-info-modal-content {
+.user-info-modal-content {
   position: fixed;
   width: 300px;
   height: 300px;
@@ -21,7 +21,7 @@
   border: 2px solid #666;
 }
 
-.account-info-modal-layer {
+.user-info-modal-layer {
   position:fixed;
   top: 0;
   left: 0;
@@ -31,19 +31,19 @@
   z-index: -1;
 }
 
-.account-info-modal-content > img {
+.user-info-modal-content > img {
   width: 24px;
   height: 24px;
 }
 
-.account-info-modal-content-animation-up {
+.user-info-modal-content-animation-up {
   animation-name: move-updown;
   animation-duration: 1.5s;
   animation-direction: normal;
   animation-iteration-count: 1;
 }
 
-.account-info-modal-content-animation-down {
+.user-info-modal-content-animation-down {
   animation-name: move-updown;
   animation-duration: 1.5s;
   animation-direction: reverse;

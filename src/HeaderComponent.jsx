@@ -57,7 +57,11 @@ function HeaderComponent(props) {
           </tbody>
         </table>
       </div>
-      <AccountModal isLoginBtnClick={isLoginBtnClick} setIsLoginBtnClick={setIsLoginBtnClick} setIsLoggedIn={props.setIsLoggedIn}></AccountModal>
+      <AccountModal
+      isLoginBtnClick={isLoginBtnClick}
+      setIsLoginBtnClick={setIsLoginBtnClick}
+      setIsLoggedIn={props.setIsLoggedIn}
+      setUserInfo={props.setUserInfo}></AccountModal>
     </div>
   );
 }
