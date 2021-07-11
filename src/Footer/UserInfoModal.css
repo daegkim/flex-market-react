@@ -38,14 +38,14 @@
 
 .user-info-modal-content-animation-up {
   animation-name: move-updown;
-  animation-duration: 1.5s;
+  animation-duration: 1s;
   animation-direction: normal;
   animation-iteration-count: 1;
 }
 
 .user-info-modal-content-animation-down {
   animation-name: move-updown;
-  animation-duration: 1.5s;
+  animation-duration: 1s;
   animation-direction: reverse;
   animation-iteration-count: 1;
 }

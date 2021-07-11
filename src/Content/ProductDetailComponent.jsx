@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import urls from './urls';
+import urls from '../urls';
 
 function ProductDetailComponent() {
   const { productId } = useParams();

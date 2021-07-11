@@ -3,11 +3,11 @@ import UserInfoModalComponent from './UserInfoModalComponent';
 import { useState } from 'react';
 
 function DockerComponent(props) {
-
+  //state
   const [isUserInfoShown, setIsUserInfoShown] = useState(false);
   const [userInfoMoveUp, setuserInfoMoveUp] = useState(false);
 
-
+  //return
   return (
     <div className="docker">
       <div className="docker-content">
@@ -20,7 +20,8 @@ function DockerComponent(props) {
       moveUp={userInfoMoveUp}
       isShown={isUserInfoShown}
       setIsShown={setIsUserInfoShown}
-      setMoveUp={setuserInfoMoveUp}></UserInfoModalComponent>
+      setMoveUp={setuserInfoMoveUp}
+      setIsLoading={props.setIsLoading}></UserInfoModalComponent>
     </div>
   );
 }

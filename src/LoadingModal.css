@@ -1,0 +1,53 @@
+.loading-modal {
+  position: relative;
+  width: 100%;
+  z-index: 999;
+}
+
+.loading-modal-content {
+  position: fixed;
+  top: 300px;
+  left: 300px;
+  padding: 20px 10px;
+  background-color: #ffffff;
+  border: 2px solid #666;
+}
+
+.loading-modal-layer {
+  position:fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  /*background:rgba(0, 0, 0, 0.4);*/
+  z-index: -1;
+}
+
+/*브라우저별 세팅은 생략*/
+@keyframes rotate-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-modal-container, .loading-modal-main {
+  height: 100px;
+  position: relative;
+  width: 100px;
+  border-radius: 100%;
+}
+
+.loading-modal-container {
+  margin: 40px auto;
+  background-color: black;
+}
+
+.loading-modal-main {
+  border: 2px solid transparent;
+  border-color: transparent #FFF transparent #FFF;
+  animation: rotate-loading 1.5s linear 0s infinite normal;
+  transform-origin: 50% 50%;
+}

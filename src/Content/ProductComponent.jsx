@@ -1,7 +1,7 @@
 import './Product.css';
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import urls from './urls';
+import urls from '../urls';
 
 function ProductComponent(props) {
   const [products, setProducts] = useState([]);

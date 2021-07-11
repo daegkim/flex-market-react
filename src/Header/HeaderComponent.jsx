@@ -1,7 +1,7 @@
 import './Header.css';
 import { Link } from "react-router-dom";
 import { useState } from 'react';
-import urls from './urls';
+import urls from '../urls';
 import { useEffect } from 'react';
 import AccountModal from './AccountModalComponent';
 

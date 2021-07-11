@@ -1,6 +1,6 @@
 import './AccountModal.css';
 import { useState } from 'react';
-import urls from './urls';
+import urls from '../urls';
 
 function AccountModalComponent(props) {
   //state

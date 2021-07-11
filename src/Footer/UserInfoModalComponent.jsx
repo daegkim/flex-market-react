@@ -17,6 +17,11 @@ function UserInfoModalComponent(props) {
     }
   }
 
+  const onClickChargeBtn = (e) => {
+    props.setIsLoading(true);
+    //
+  }
+
   //return
   if(props.isShown){
     return (
@@ -27,7 +32,8 @@ function UserInfoModalComponent(props) {
           onClick={() => { setMoveDown(true); }}/>
           <p>{props.userInfo.userName}님 환영합니다.</p>
           <p>현재 Point : {props.userInfo.point}P</p>
-          <button>충전</button>
+          <input type="number"></input>
+          <button onClick={onClickChargeBtn}>충전</button>
         </div>
         <div className="user-info-modal-layer">
         </div>
@@ -35,9 +41,7 @@ function UserInfoModalComponent(props) {
     );
   }
   else{
-    return (
-      <div></div>
-    )
+    return false;
   }
 }
 
