@@ -4,5 +4,6 @@ export default {
   category: "http://localhost:4000/product/category",
   list: "http://localhost:4000/product/",
   productDetail: "http://localhost:4000/product/detail/",
-  login: "http://localhost:4000/account/login"
+  login: "http://localhost:4000/account/login",
+  changeAccount: "http://localhost:4000/account/changeAccount"
 }

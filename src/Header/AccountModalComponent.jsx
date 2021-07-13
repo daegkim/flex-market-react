@@ -35,6 +35,7 @@ function AccountModalComponent(props) {
         setIsCorrectPwd(true);
         setUserId('');
         setUserPwd('');
+        console.log(res_json.userInfo);
         props.setUserInfo(res_json.userInfo);
       }
       else{

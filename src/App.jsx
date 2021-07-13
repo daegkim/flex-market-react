@@ -12,7 +12,7 @@ function App() {
   //state
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [categoryId, setCategoryId] = useState("001");
-  const [userInfo, setUserInfo] = useState({userId : "daegeun"})
+  const [userInfo, setUserInfo] = useState({})
   const [isLoading, setIsLoading] = useState(false);
 
   //useEffect

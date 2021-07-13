@@ -1,9 +1,11 @@
 import './UserInfoModal.css';
+import urls from '../urls';
 import { useState } from 'react';
 
 function UserInfoModalComponent(props) {
   //state
   const [moveDown, setMoveDown] = useState(false);
+  const [inputPoint, setInputPoint] = useState(0);
 
   //custom method
   const makeMoveDown = () => {
@@ -17,8 +19,41 @@ function UserInfoModalComponent(props) {
     }
   }
 
+  const tryChargePoint = function(userId, point) {
+    fetch(urls.changeAccount, {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(
+        {
+          userId: userId,
+          changeData: {
+            point: point
+          }
+        }
+      )
+    })
+    .then((res) => {
+      return res.json();
+    })
+    .then((res_json) => {
+      if(res_json.isSuccess){
+      }
+      else{
+      }
+    })
+    .catch((res) => {
+      console.log(res);
+    })
+    
+  }
+
   const onClickChargeBtn = (e) => {
-    props.setIsLoading(true);
+    //props.setIsLoading(true);
+    console.log(props.userInfo, parseInt(inputPoint));
+    tryChargePoint(props.userInfo.userId, parseInt(inputPoint));
     //
   }
 
@@ -32,7 +67,7 @@ function UserInfoModalComponent(props) {
           onClick={() => { setMoveDown(true); }}/>
           <p>{props.userInfo.userName}님 환영합니다.</p>
           <p>현재 Point : {props.userInfo.point}P</p>
-          <input type="number"></input>
+          <input type="number" onChange={(e) => {setInputPoint(e.target.value)}}></input>
           <button onClick={onClickChargeBtn}>충전</button>
         </div>
         <div className="user-info-modal-layer">
