@@ -21,7 +21,8 @@ function DockerComponent(props) {
       isShown={isUserInfoShown}
       setIsShown={setIsUserInfoShown}
       setMoveUp={setuserInfoMoveUp}
-      setIsLoading={props.setIsLoading}></UserInfoModalComponent>
+      setIsLoading={props.setIsLoading}
+      setUserInfo={props.setUserInfo}></UserInfoModalComponent>
     </div>
   );
 }

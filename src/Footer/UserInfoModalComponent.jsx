@@ -19,7 +19,7 @@ function UserInfoModalComponent(props) {
     }
   }
 
-  const tryChargePoint = function(userId, point) {
+  const tryChargePoint = async function(userId, point) {
     fetch(urls.changeAccount, {
       method: 'POST',
       mode: 'cors',
@@ -40,6 +40,7 @@ function UserInfoModalComponent(props) {
     })
     .then((res_json) => {
       if(res_json.isSuccess){
+        props.setUserInfo(res_json.afterUserInfo);
       }
       else{
       }
@@ -50,10 +51,12 @@ function UserInfoModalComponent(props) {
     
   }
 
-  const onClickChargeBtn = (e) => {
+  const onClickChargeBtn = async (e) => {
     //props.setIsLoading(true);
     console.log(props.userInfo, parseInt(inputPoint));
-    tryChargePoint(props.userInfo.userId, parseInt(inputPoint));
+    await tryChargePoint(props.userInfo.userId, parseInt(inputPoint));
+    e.target.value = 0;
+    setInputPoint(0);
     //
   }
 
@@ -67,7 +70,7 @@ function UserInfoModalComponent(props) {
           onClick={() => { setMoveDown(true); }}/>
           <p>{props.userInfo.userName}님 환영합니다.</p>
           <p>현재 Point : {props.userInfo.point}P</p>
-          <input type="number" onChange={(e) => {setInputPoint(e.target.value)}}></input>
+          <input value={inputPoint} type="number" onChange={(e) => {setInputPoint(e.target.value)}}></input>
           <button onClick={onClickChargeBtn}>충전</button>
         </div>
         <div className="user-info-modal-layer">

@@ -36,7 +36,7 @@ function App() {
           <Route path="/product/:productId" component={ ProductDetailComponent } exact></Route>
         </Switch>
 
-        <DockerComponent userInfo={userInfo} setIsLoading={setIsLoading}></DockerComponent>
+        <DockerComponent userInfo={userInfo} setIsLoading={setIsLoading} setUserInfo={setUserInfo}></DockerComponent>
 
         <LoadingComponent isLoading={isLoading} setIsLoading={setIsLoading}></LoadingComponent>
       </div>
