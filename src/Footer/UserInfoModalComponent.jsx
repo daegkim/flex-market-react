@@ -20,7 +20,7 @@ function UserInfoModalComponent(props) {
   }
 
   const tryChargePoint = async function(userId, point) {
-    fetch(urls.changeAccount, {
+    fetch(urls.change_point, {
       method: 'POST',
       mode: 'cors',
       headers: {
@@ -40,7 +40,7 @@ function UserInfoModalComponent(props) {
     })
     .then((res_json) => {
       if(res_json.isSuccess){
-        props.setUserInfo(res_json.afterUserInfo);
+        props.setUserInfo(res_json.userInfo);
       }
       else{
       }

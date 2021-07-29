@@ -26,9 +26,11 @@ function AccountModalComponent(props) {
       body: JSON.stringify({userId: userId, userPwd: userPwd})
     })
     .then((res) => {
+      console.log(res);
       return res.json();
     })
     .then((res_json) => {
+      console.log(res_json);
       if(res_json.isSuccess){
         props.setIsLoginBtnClick(!props.isLoginBtnClick);
         props.setIsLoggedIn(true);
