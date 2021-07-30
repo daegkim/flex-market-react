@@ -26,7 +26,6 @@ function AccountModalComponent(props) {
       body: JSON.stringify({userId: userId, userPwd: userPwd})
     })
     .then((res) => {
-      console.log(res);
       return res.json();
     })
     .then((res_json) => {

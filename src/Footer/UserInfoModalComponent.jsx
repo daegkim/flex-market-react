@@ -19,8 +19,8 @@ function UserInfoModalComponent(props) {
     }
   }
 
-  const tryChargePoint = async function(userId, point) {
-    fetch(urls.change_point, {
+  const tryChargePoint = function(userId, point) {
+    fetch(urls.charge_point, {
       method: 'POST',
       mode: 'cors',
       headers: {

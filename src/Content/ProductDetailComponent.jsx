@@ -11,6 +11,44 @@ function ProductDetailComponent() {
     .then((res_json) => { setProductDetail(res_json); });
   }
 
+  const tryBuyProduct = async (e) => {
+    fetch(urls.buy_product, {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(
+        {
+          userId: 'dgsoul',
+          orderProduct: {
+            productId: productId,
+            pricePerPiece: productDetail.price,
+            quantity: 1
+          }
+        }
+      )
+    })
+    .then((res) => {
+      return res.json();
+    })
+    .then((res_json) => {
+      if(res_json.isSuccess){
+
+      }
+      else{
+        throw new Error(res_json.reason);
+      }
+    })
+    .catch((err) => {
+      alert(err);
+    })
+  }
+
+  const onClickBuyBtn = async (e) => {
+    await tryBuyProduct()
+  }
+
   useEffect(()=>{
     getProductDetail();
   }, []);
@@ -24,7 +62,7 @@ function ProductDetailComponent() {
         <Link to="/">
           <button>prev</button>
         </Link>
-        <button>buy</button>
+        <button onClick={onClickBuyBtn}>buy</button>
       </div>
     </div>
   );

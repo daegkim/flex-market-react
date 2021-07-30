@@ -5,5 +5,6 @@ export default {
   list: "http://localhost:4000/product/",
   productDetail: "http://localhost:4000/product/detail/",
   login: "http://localhost:4000/account/login",
-  change_point: "http://localhost:4000/account/change_point"
+  charge_point: "http://localhost:4000/account/charge_point",
+  buy_product: "http://localhost:4000/order/new_order"
 }
