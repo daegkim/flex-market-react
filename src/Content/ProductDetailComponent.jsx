@@ -21,11 +21,11 @@ function ProductDetailComponent() {
       body: JSON.stringify(
         {
           userId: 'dgsoul',
-          orderProduct: {
-            productId: productId,
+          orderProduct: [{
+            productId: parseInt(productId),
             pricePerPiece: productDetail.price,
             quantity: 1
-          }
+          }]
         }
       )
     })
