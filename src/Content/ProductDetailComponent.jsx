@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import urls from '../urls';
 
-function ProductDetailComponent() {
+function ProductDetailComponent(props) {
   const { productId } = useParams();
   const [productDetail, setProductDetail] = useState({image: ""});
   const getProductDetail = () => {
@@ -34,7 +34,8 @@ function ProductDetailComponent() {
     })
     .then((res_json) => {
       if(res_json.isSuccess){
-
+        props.setUserInfo(res_json.userInfo);
+        alert('Purchase Successful!')
       }
       else{
         throw new Error(res_json.reason);

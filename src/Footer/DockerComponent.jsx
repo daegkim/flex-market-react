@@ -11,9 +11,15 @@ function DockerComponent(props) {
   return (
     <div className="docker">
       <div className="docker-content">
-        <img src={process.env.PUBLIC_URL + '/user-icon.png'} onClick={() => { setIsUserInfoShown(true); setuserInfoMoveUp(true); }}/>
-        <img src={process.env.PUBLIC_URL + '/cart-icon.png'}/>
-        <img src={process.env.PUBLIC_URL + '/favorite-icon.png'}/>
+        <img src={process.env.PUBLIC_URL + '/user-icon.png'}
+        title='account'
+        onClick={() => { setIsUserInfoShown(true); setuserInfoMoveUp(true); }}/>
+        <img src={process.env.PUBLIC_URL + '/orders-icon.png'}
+        title='orders'/>
+        <img src={process.env.PUBLIC_URL + '/cart-icon.png'}
+        title='cart'/>
+        <img src={process.env.PUBLIC_URL + '/favorite-icon.png'}
+        title='favorite'/>
       </div>
       <UserInfoModalComponent
       userInfo={props.userInfo}
